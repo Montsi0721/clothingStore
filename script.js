@@ -277,6 +277,8 @@ function toggleTheme() {
         saveTheme('light');
         updateThemeIcons('light');
     }
+
+    dropdownMenu.classList.remove('active');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
