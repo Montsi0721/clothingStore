@@ -1,4 +1,3 @@
-
 // DOM elements
 const pageLoading = document.getElementById('pageLoading');
 const companyLogo = document.getElementById('companyLogo');
@@ -236,7 +235,52 @@ const products = [
     }
 ];
 
+function getSavedTheme() {
+    return localStorage.getItem('theme') || 'light'; // Default to light theme
+}
+
+function saveTheme(theme) {
+    localStorage.setItem('theme', theme);
+}
+
+function applySavedTheme() {
+    const savedTheme = getSavedTheme();
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        updateThemeIcons('dark');
+    } else {
+        document.body.classList.remove('dark-theme');
+        updateThemeIcons('light');
+    }
+}
+
+function updateThemeIcons(theme) {
+    const themeIcons = document.querySelectorAll('#themeIcon, .theme-toggle i');
+    themeIcons.forEach(icon => {
+        if (theme === 'dark') {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    });
+}
+
+function toggleTheme() {
+    const isDarkTheme = document.body.classList.toggle('dark-theme');
+    
+    // Save theme preference
+    if (isDarkTheme) {
+        saveTheme('dark');
+        updateThemeIcons('dark');
+    } else {
+        saveTheme('light');
+        updateThemeIcons('light');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    applySavedTheme();
+    
     setTimeout(() => {
         pageLoading.classList.add('hidden');
     }, 1500);
@@ -632,20 +676,6 @@ function addToCartFromModal() {
         showNotification(`${product.title} added to cart!`);
         closeModal();
     }
-}
-
-function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
-
-    // Update theme icon
-    const themeIcons = document.querySelectorAll('#themeIcon, .theme-toggle i');
-    themeIcons.forEach(icon => {
-        if (document.body.classList.contains('dark-theme')) {
-            icon.className = 'fas fa-sun';
-        } else {
-            icon.className = 'fas fa-moon';
-        }
-    });
 }
 
 function handleContactForm(event) {
