@@ -1205,14 +1205,6 @@
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
 
-            .pagination {
-                display: flex !important;
-                position: relative !important;
-                gap: 10px;
-                margin-bottom: 40px;
-                overflow: visible;
-            }
-
             .pagination-btn {
                 width: 40px;
                 height: 40px;
