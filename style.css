@@ -1252,7 +1252,6 @@
 
             .product-grid {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                margin-bottom: 100px;
             }
 
             .pagination {
@@ -1304,7 +1303,6 @@
 
             .gallery-grid {
                 grid-template-columns: 1fr;
-                margin-bottom: 40px;
             }
 
             .search-container.expanded {
