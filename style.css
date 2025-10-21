@@ -1298,6 +1298,7 @@
 
             .pagination {
                 gap: 10px;
+                margin-bottom: 40px;
             }
 
             .pagination-btn {
@@ -1310,4 +1311,5 @@
                 font-size: 16px;
                 min-width: 100px;
             }
+
         }
