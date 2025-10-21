@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>StyleHub - Premium Fashion Store</title>
+</head>
+
+<body>
+    <div class="page-loading" id="pageLoading">
+        <div class="loading-spinner large"></div>
+        <p>Loading StyleHub...</p>
+    </div>
+
+    <div class="company-logo" id="companyLogo">
+        <div class="logo-placeholder">
+            <i class="fas fa-crown"></i>
+            <span>StyleHub</span>
+        </div>
+    </div>
+
+    <div class="search-container" id="searchContainer">
+        <div class="search-bar" id="searchBar">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
+            <button class="close-search" id="closeSearch">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="top-menu" id="topMenu">
+        <button class="search-toggle" id="searchToggle">
+            <i class="fas fa-search"></i>
+        </button>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <button class="menu-item" onclick="showContent('faq')">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQ</span>
+            </button>
+            <button class="menu-item" onclick="showContent('gallery')">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+            </button>
+            <button class="menu-item" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="themeIcon"></i>
+                <span>Toggle Theme</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="theme-toggle">
+        <button id="themeToggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="particles" id="particles-container"></div>
+
+    <div class="nav-container">
+        <div class="nav-bar">
+            <button class="active" onclick="showContent('shop')">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Shop</span>
+            </button>
+            <button onclick="showContent('cart')">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+            </button>
+            <button onclick="showContent('about')">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </button>
+            <button onclick="showContent('contact')">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay home-bg">
+        <div class="content-container">
+            <div class="content active" id="shop">
+                <h2>Our Products</h2>
+                <p>Discover our carefully curated collection of premium fashion items. From elegant dresses to stylish
+                    accessories,
+                    we offer quality pieces for every occasion.</p>
+                <div class="search-results" id="searchResults"></div>
+                <div class="product-grid" id="productGrid"></div>
+                <div class="pagination" id="pagination">
+                    <button class="pagination-btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="page-info" id="pageInfo">Page 1 of 5</div>
+                    <button class="pagination-btn" id="nextPage">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay home-bg">
+        <div class="content-container">
+            <div class="content" id="cart">
+                <h2>Shopping Cart</h2>
+                <div id="cartItems"></div>
+                <div class="cart-total" id="cartTotal">Total: M0.00</div>
+                <button class="btn" onclick="alert('Checkout functionality would go here!')">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay home-bg">
+        <div class="content-container">
+            <div class="content" id="about">
+                <h2>About Us</h2>
+                <p>Welcome to StyleHub, where fashion meets elegance. We offer a curated collection of premium
+                    clothing and accessories for the modern individual.</p>
+                <div class="store-info">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Fashion Avenue, Style City</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@stylehub.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Fri: 9AM-9PM, Sat-Sun: 10AM-6PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay home-bg">
+        <div class="content-container">
+            <div class="content" id="contact">
+                <h2>Contact Us</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="margin-bottom: 20px;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay home-bg">
+        <div class="content-container">
+            <div class="content" id="faq">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h4>What is your return policy?</h4>
+                    <p>We offer a 30-day return policy for all items in original condition with tags attached.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you ship internationally?</h4>
+                    <p>Yes, we ship to over 50 countries worldwide. Shipping costs vary by location.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How can I track my order?</h4>
+                    <p>Once your order ships, you'll receive a tracking number via email to monitor your package.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What payment methods do you accept?</h4>
+                    <p>We accept all major credit cards, PayPal, and Apple Pay for your convenience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay home-bg">
+        <div class="content-container">
+            <div class="content" id="gallery">
+                <h2>Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Elegant Evening Wear">
+                        <div class="gallery-caption">Elegant Evening Wear</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Casual Collection">
+                        <div class="gallery-caption">Casual Collection</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Accessory Showcase">
+                        <div class="gallery-caption">Accessory Showcase</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Seasonal Trends">
+                        <div class="gallery-caption">Seasonal Trends</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <div class="modal-image" id="modalImage">
+                <img id="modalImg" src="" alt="Product Image">
+            </div>
+            <div class="modal-info" id="modalInfo">
+                <h3 id="modalProductTitle">Product Title</h3>
+                <p id="modalProductDescription">Detailed product description goes here with all the features and
+                    benefits.</p>
+                <div class="modal-price" id="modalPrice">M99.99</div>
+                <div class="modal-actions">
+                    <button class="btn" onclick="addToCartFromModal()">Add to Cart</button>
+                </div>
+            </div>
+            <button class="info-toggle" id="infoToggle">
+                <i class="fas fa-info"></i>
+            </button>
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
