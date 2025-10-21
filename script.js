@@ -245,7 +245,6 @@ function saveTheme(theme) {
 
 function applySavedTheme() {
     const savedTheme = getSavedTheme();
-    dropdownMenu.classList.remove('active');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
         updateThemeIcons('dark');
